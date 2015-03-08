@@ -8,7 +8,7 @@ public class Main {
 		AlistCalc calc = new AlistCalc();
 		calc.setVisible(true);
 		calc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		calc.setSize(270,200);
+		calc.setSize(220,180);
 		calc.setResizable(false);
 		calc.setLocationRelativeTo(null);
 
