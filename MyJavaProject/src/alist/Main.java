@@ -1,12 +1,12 @@
 package alist;
 
-import List.AList;
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		AList aa = new AList();
-		aa.addEnd(45);
+		
 		aa.addEnd(42);
 		aa.addEnd(55);
 		aa.addEnd(66);
@@ -15,7 +15,7 @@ public class Main {
 		System.out.println(aa);
 		aa.sort();
 		System.out.println(aa);
-		aa.clear();
+		aa.reverseHalf();
 		System.out.println(aa);
 		
 	}

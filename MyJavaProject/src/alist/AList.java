@@ -2,8 +2,19 @@ package alist;
 
 public class AList {
 
+
 	int[] ar  = new int[100];
 	int count = 0;
+
+	public int get(int pos)
+	{
+		return ar[pos];
+	}
+	public void set(int pos, int val)
+	{
+		ar[pos] = val;
+	}
+
 	public void addEnd(int val)
 	{
 		ar[count++] = val;
@@ -18,23 +29,36 @@ public class AList {
 		ar[0]=val;
 		count++;
 
-	}//6 oll8
+	}
 	public void addPos(int pos, int val)
 	{
-		for (int i = count; i > 0; i--) 
+		for (int i = count; i > pos; i--) 
 		{
-			if(i>pos)
-				ar[i]=ar[i-1];
+
+			ar[i]=ar[i-1];
 		}
-		ar[pos]=val;
-		count++;
+		if(count>pos)
+		{
+			ar[pos]=val;
+			count++;
+		}
+		else
+		{
+			count=pos+1;
+			ar[pos]=val;
+		}	
+
 	}
-	public void delStart(){
+	public void delStart()
+	{
 		for (int i = 0; i < count; i++) 
 		{
 			ar[i]=ar[i+1];
 		}
-		count--;
+		if(count>0)
+			count--;
+//		else 
+//			throw
 	}
 	public void delEnd()
 	{
@@ -67,10 +91,11 @@ public class AList {
 			}
 		}
 	}
-	public void reverseHalf(){
+	public void reverseHalf()
+	{
 		int a=count%2==0?count/2:count/2-1;
 
-		
+
 		for (int i = 0; i < a; i++) 
 		{
 			int temp = ar[i];
@@ -91,21 +116,33 @@ public class AList {
 
 		}
 	}
-	public int [] toArray(){
+
+	public void reverse2()
+	{
+		for (int i = 0; i < count/2; i++) 
+		{
+			int tmp = ar[i];
+			ar[i] = ar[count-i-1];
+			ar[count-i-1] = tmp;
+		}
+	}
+
+	public int [] toArray()
+	{
 		int[] array = new int[count];
 		for (int i = 0; i < array.length; i++) 
 		{
 			array[i]=ar[i];
 		}
-
-		return toArray();
+		return array;
 	}
 	public void init (int[]array)
 	{
 		for (int i = 0; i < array.length; i++) 
 		{
-			System.out.println(array[i]);
+			ar[i] = array[i];
 		}
+		count = array.length;
 	}
 	public int max()
 	{
@@ -157,10 +194,6 @@ public class AList {
 	}
 	public void clear()
 	{
-		for (int i = 0; i <count; i++) 
-		{
-			ar[i] = 0;
-		}
 		count = 0;
 	}
 
@@ -177,3 +210,4 @@ public class AList {
 		return str;
 	}
 }
+
