@@ -57,6 +57,21 @@ public class MyTableModel extends DefaultTableModel
 			System.out.println(e.getMessage());
 		}
 	}
+
+	public static void load(String id, String FName, String LName, String age) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		
+		Class.forName("org.h2.Driver").newInstance();
+		Connection conn = DriverManager.getConnection("jdbc:h2:~/test","sa", "");
+		Statement st = conn.createStatement();
+		
+		Statement stmt = conn.createStatement();
+		String str = "INSERT INTO person (Id, FName, LName, Age) VALUES ("+ id + ", "+ "'" + FName + "', " + "'" + LName + "', " + age + ")";
+		String sql = str;
+		stmt.executeUpdate(sql);
+		stmt.close();
+		conn.close();	
+		
+	}
 		
 		
 	}
